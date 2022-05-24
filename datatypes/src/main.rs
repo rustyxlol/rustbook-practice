@@ -3,7 +3,7 @@ fn main() {
     println!("Guess is: {}", guess);
 
     let tup: (i32, f64) = (10, 3.14);
-    let tup2 = (10, 3.10);
+    // let tup2 = (10, 3.10);
     let (x, y) = tup;
 
     println!("Accessing after unpacking");
@@ -13,9 +13,9 @@ fn main() {
 
     let a1 = [1, 2, 3, 4, 5, 6];
 
-    let a2: [i32; 5] = [1, 2, 3, 4, 5]; // type and number of elements
+    // let a2: [i32; 5] = [1, 2, 3, 4, 5]; // type and number of elements
 
-    let a3 = [3; 5];
+    // let a3 = [3; 5];
 
     println!("Array indexing: a1[0]: {}", a1[0])
 }
