@@ -2,7 +2,7 @@ fn main() {
     let guess: u32 = "42".parse().expect("Error");
     println!("Guess is: {}", guess);
 
-    let tup: (i32, f64) = (10, 3.14);
+    let tup: (i32, f64) = (10, std::f64::consts::PI);
     // let tup2 = (10, 3.10);
     let (x, y) = tup;
 
