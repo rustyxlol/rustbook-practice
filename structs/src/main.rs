@@ -35,5 +35,8 @@ fn main() {
 
     println!("{}", black.0);
 
-    println!("{} {}", user1.visits, user3.email);
+    println!(
+        "{} {} {} {}",
+        user1.username, user1.active, user1.visits, user3.email
+    );
 }
