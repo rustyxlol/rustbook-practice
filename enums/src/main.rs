@@ -1,25 +1,42 @@
-enum IpAddrKind {
-    V4,
-    V6,
+use std::io;
+
+enum Direction{
+    Up,
+    Down,
+    Left,
+    Right,
+    Wrong
+}
+
+impl Direction {
+    fn get_dir(direction: &str) -> Direction{
+        match direction.trim() {
+            "w" => Direction::Up,
+            "s" => Direction::Down,
+            "a" => Direction::Left,
+            "d" => Direction::Right,
+            _ => Direction::Wrong,
+        }
+    }
 }
 
 fn main() {
-    let version4 = IpAddrKind::V4;
-    let version6 = IpAddrKind::V6;
-
-    let some_number = Some(4);
-    let some_string = Some("A string");
-
-    let no_number: Option<i32> = None;
-
-    let x: i8 = 20;
-    let y: Option<i8> = Some(4);
-
-    // let sum = x + y // this will throw an error 
+    println!("Enter direction to move: ");
+    loop {
+        let mut input = String::new();
+        io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
+        direction_match(&input)
+    } 
 }
 
-fn route(ip_kind: IpAddrKind) {
-    // Can be called with both v4 and v6, not restraints  for types
+fn direction_match(direction: &str) {
+    match Direction::get_dir(direction) {
+        Direction::Up => println!("Player is going up!"),
+        Direction::Down => println!("Player is going Down!"),
+        Direction::Left => println!("Player is going Left!"),
+        Direction::Right => println!("Player is going Right!"),
+        Direction::Wrong => println!("Wrong direction"),
+    }
 }
-
-
