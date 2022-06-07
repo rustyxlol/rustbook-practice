@@ -9,9 +9,7 @@ use std::io;
  */
 
 fn gcd(a: u64, b: u64) -> u64 {
-    if a == 0 {
-        b
-    } else if b == 0 {
+    if b == 0 {
         a
     } else {
         gcd(b, a % b)
