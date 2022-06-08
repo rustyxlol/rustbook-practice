@@ -1,4 +1,4 @@
-use std::io;
+use std::env;
 use std::f64::consts::PI;
 
 struct Circle {
@@ -15,23 +15,20 @@ impl Circle {
     }
 }
 
-fn get_radius() -> f64 {
-    let mut radius = String::new();
-
-    io::stdin()
-    .read_line(&mut radius)
-    .expect("Error reading");
-
-    let radius: f64 = match radius.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0f64,
-    };
-
-    radius
-}
 
 fn main() {
-    let circle: Circle = Circle {radius: get_radius()};
-    println!("Area: {}", circle.area());
-    println!("Perimeter: {}", circle.circumference());
+    let args: Vec<String> = env::args().collect();
+
+    let radius = &args[1];
+ 
+    let radius: f64 = match radius.trim().parse() {
+        Ok(num) => num,
+        Err(_) => panic!("Not a valid number")
+    };
+
+    let circle: Circle = Circle {radius};
+
+    println!("The radius is: {}", radius);
+    println!("The circumference is: {}", circle.circumference());
+    println!("The area is: {}", circle.area());
 }
