@@ -1,7 +1,6 @@
 #[derive(Debug)]
 enum UsState {
     Alaska,
-    NewYork,
     Washington,
 }
 
@@ -27,5 +26,9 @@ impl Coin {
 }
 
 fn main() {
-    println!("{}", Coin::coin_value(Coin::Quarter(UsState::Alaska)));
+    println!("{}", Coin::coin_value(Coin::Penny));
+    println!("{:?}", Coin::coin_value(Coin::Nickle));
+    println!("{:?}", Coin::coin_value(Coin::Dime));
+    println!("{:?}", Coin::coin_value(Coin::Quarter(UsState::Alaska)));
+    println!("{:?}", Coin::coin_value(Coin::Quarter(UsState::Washington)));
 }
