@@ -1,67 +1,31 @@
-/*
- Object structure
- It should contain:
- 1. Shape(enum)
- 2. Color(struct)
- 3. Origin(struct)
-*/
-use std::io;
-
 #[derive(Debug)]
-struct Object {
-    shape: Shape,
-    color: Color,
-    location: Origin,
+enum UsState {
+    Alaska,
+    NewYork,
+    Washington,
 }
 
-impl Object {
-    fn new(shape: Shape, color: Color, location: Origin) -> Object {
-        Object {
-            shape,
-            color,
-            location,
+enum Coin {
+    Penny,
+    Nickle,
+    Dime,
+    Quarter(UsState),
+}
+
+impl Coin {
+    fn coin_value(coin: Coin) -> u8 {
+        match coin {
+            Coin::Penny => 1,
+            Coin::Nickle => 5,
+            Coin::Dime => 10,
+            Coin::Quarter(state) => {
+                println!("Quarter of: {:?}", state);
+                25
+            }
         }
     }
-}
-#[derive(Debug)]
-enum Shape{
-    Square,
-    Rectangle,
-    Circle,
-    Triangle,
-    Polygon,
-    Ellipse,
-}
-
-impl Shape {
-    fn get_shape(number: &str) -> Shape {
-        match number {
-            "1" => Shape::Square,
-            "2" => Shape::Rectangle,
-            "3" => Shape::Triangle,
-            "4" => Shape::Circle,
-            "5" => Shape::Ellipse,
-            "6" => Shape::Polygon,
-            _ => Shape::Square,
-        }
-    }
-}
-#[derive(Debug)]
-struct Color {
-    r: u8,
-    g: u8,
-    b: u8,
-}
-#[derive(Debug)]
-struct Origin {
-    x: u8,
-    y: u8,
 }
 
 fn main() {
-    let obj: Object = Object::new(Shape::Circle, Color {r: 20, g: 30, b: 30}, Origin {x: 20, y: 0});
-
-    println!("{:#?}", obj);
-
+    println!("{}", Coin::coin_value(Coin::Quarter(UsState::Alaska)));
 }
-
