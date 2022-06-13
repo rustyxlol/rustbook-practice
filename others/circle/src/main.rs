@@ -29,6 +29,6 @@ fn main() {
     let circle: Circle = Circle {radius};
 
     println!("The radius is: {}", radius);
-    println!("The circumference is: {}", circle.circumference());
-    println!("The area is: {}", circle.area());
+    println!("The circumference is: {:.2}", circle.circumference());
+    println!("The area is: {:.2}", circle.area());
 }
