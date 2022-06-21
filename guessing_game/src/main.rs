@@ -7,6 +7,20 @@ use std::cmp::Ordering;
 use std::io; // Standard library input/output
 use std::io::Write; // For flush // for comparison
 
+struct Guess {
+    value: i32,
+}
+
+impl Guess {
+    fn new(value: i32) -> Guess {
+        if value < 0 || value > 100 {
+            panic!("guess value must be between 0 and 100, got {}", value)
+        }
+
+        Guess {value}
+    }
+}
+
 /* MAIN FUNCTION */
 fn main() {
     println!("Guess the number!");
@@ -30,8 +44,13 @@ fn main() {
                                             /* read_line returns io::Result, an enum */
         /* io::Result has an except method, if Result is Ok then it contains value, else Err, an error occurs*/
 
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
+        // let guess: u32 = match guess.trim().parse() {
+        //     Ok(num) => num,
+        //     Err(_) => continue,
+        // };
+
+        let guess = match guess.trim().parse() {
+            Ok(value) => Guess::new(value).value,
             Err(_) => continue,
         };
 
