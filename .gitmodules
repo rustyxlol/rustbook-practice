@@ -1,3 +1,0 @@
-[submodule "minigrep"]
-	path = minigrep
-	url = ./minigrep/
